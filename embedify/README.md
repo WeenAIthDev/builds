@@ -1,6 +1,6 @@
-#Embedify
-##A command line tool that converts instagram reels and youtube shorts urls into embed url wrapped into iframe basically a embed code generator.
-
+# Embedify
+## A command line tool that converts instagram reels and youtube shorts urls into embed url wrapped into iframe basically a embed code generator.
+```
         ┌───────────────┐
         │     INPUT     │
         │   (URL link)  │
@@ -42,3 +42,4 @@
          │   SAVE / OUTPUT      │
          │ Original + Embed     │
          └──────────────────────┘
+```
