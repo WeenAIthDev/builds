@@ -21,10 +21,77 @@ def embed(link):
     embed_code = "<iframe src={}></iframe>".format(link)
     return embed_code
 
-def output(embed_link, embed_code):
+def output(embed_link, embed_code, url_type, url):
     print("Embed link:", embed_link)
     print("Embed code:", embed_code)
+    with open("output.txt", 'a') as o:
+      o.write("For "+ url_type +": " +url+ "\n")
+      o.write("Embed link: "+ embed_link + "\n")
+      o.write("Embed code: "+ embed_code + "\n")
+    o.close()
+      
 
+def url_matcher(url):
+     instagram_domain_match = re.search("instagram", url)
+     instagram_reel_match = re.search("reel",url)
+     yt_domain_match = re.search("youtube", url)
+     yt_shorts_match = re.search("shorts",url)
+
+     if instagram_domain_match == None and instagram_reel_match == None:
+        instagram_domain_match = False
+        instagram_reel_match = False
+     else:
+        yt_domain_match = False
+        yt_shorts_match = False   
+     
+     return {"instagram_domain_match":instagram_domain_match, "instagram_reel_match":instagram_reel_match, "yt_domain_match":yt_domain_match, "yt_shorts_match":yt_shorts_match}
+
+def compute_embeds(instagram_domain_match, instagram_reel_match, yt_domain_match, yt_shorts_match, url):
+    try:
+      if instagram_domain_match and instagram_reel_match:
+        url_type = "instagram reel"
+        insta_id = getinstaid(url)
+        embed_insta_link = instalink(insta_id)
+        code_insta = embed(embed_insta_link)
+        output(embed_insta_link, code_insta, url_type, url)
+
+      elif yt_domain_match and yt_shorts_match:
+        url_type = "yt shorts"
+        yt_id = getytid(url)
+        embed_yt_link = ytlink(yt_id)
+        code_yt = embed(embed_yt_link)
+        output(embed_yt_link, code_yt, url_type, url)
+
+      else:
+        print("Invalid, Please enter only instagram reel or youtube shorts links only")
+
+    except:
+      print("An error has occured")
+
+    finally:
+      print("Embedify terminated")     
+
+def url_parser(input_source):
+    if ('.txt'not in input_source):
+      match = url_matcher(input_source)
+      instagram_domain_match = match['instagram_domain_match']
+      instagram_reel_match = match['instagram_reel_match']
+      yt_domain_match = match['yt_domain_match']
+      yt_shorts_match = match['yt_shorts_match']    
+      compute_embeds(instagram_domain_match, instagram_reel_match, yt_domain_match, yt_shorts_match,input_source)
+
+    else:
+        f = open(input_source, 'r', encoding="utf-8")
+        for line in f:
+            url_file = line
+            match = url_matcher(url_file)
+            instagram_domain_match = match['instagram_domain_match']
+            instagram_reel_match = match['instagram_reel_match']
+            yt_domain_match = match['yt_domain_match']
+            yt_shorts_match = match['yt_shorts_match']    
+            compute_embeds(instagram_domain_match, instagram_reel_match, yt_domain_match, yt_shorts_match,line)
+        f.close()
+    
 
 input = argparse.ArgumentParser(
     prog='Embedify',
@@ -33,32 +100,19 @@ input = argparse.ArgumentParser(
 )
 
 input.add_argument('--url', help="Add a youtube shorts or instagram reel link to generate embed link and embed code.")
+input.add_argument('--file', help="Add a youtube shorts or instagram reel links in file to generate embed link and embed code.")
 arg_url = input.parse_args()
-url = arg_url.url
+if arg_url.url:
+  url = arg_url.url
+  url_parser(url)
+elif arg_url.url and arg_url.file:
+   url = arg_url.url
+   file = arg_url.file
+   url_parser(url)  
+   url_parser(file)
+else:  
+ file = arg_url.file
+ url_parser(file)            
 
-instagram_domain_match = re.search("instagram", url)
-instagram_reel_match = re.search("reel",url)
-yt_domain_match = re.search("youtube", url)
-yt_shorts_match = re.search("shorts",url)
 
-try:
-    if instagram_domain_match and instagram_reel_match:
-        insta_id = getinstaid(url)
-        embed_insta_link = instalink(insta_id)
-        code_insta = embed(embed_insta_link)
-        output(embed_insta_link, code_insta)
 
-    elif yt_domain_match and yt_shorts_match:
-        yt_id = getytid(url)
-        embed_yt_link = ytlink(yt_id)
-        code_yt = embed(embed_yt_link)
-        output(embed_yt_link, code_yt)
-
-    else:
-        print("Invalid, Please enter only instagram reel or youtube shorts links only")
-
-except:
-    print("An error has occured")
-
-finally:
-    print("Embedify terminated")
