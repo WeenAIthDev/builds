@@ -31,7 +31,14 @@ pip install -r requirements.txt
 ````
 
 ---
+## Installation
 
+1. Clone the repository:
+```bash
+git clone https://github.com/WeenAIthDev/builds.git
+cd embedify
+```
+---
 ## Usage
 
 ```bash
