@@ -95,14 +95,15 @@ def url_parser(input_source):
 
 input = argparse.ArgumentParser(
     prog='Embedify',
-    description='Converts instagram reels and youtube shorts into embed links and embed code',
+    description='Converts instagram reels and youtube shorts into embed links and embed code storig it into an output.txt file',
     epilog='In collab with Jesus made with <3 by WeenAIthDev'
 )
 
 input.add_argument('--url', help="Add a youtube shorts or instagram reel link to generate embed link and embed code.")
 input.add_argument('--file', help="Add a youtube shorts or instagram reel links in file to generate embed link and embed code.")
+#Version 4: Adding --append option for adding into the file instead of clearing the whole file
 arg_url = input.parse_args()
-if arg_url.url:
+if arg_url.url and not arg_url.file:
   url = arg_url.url
   url_parser(url)
 elif arg_url.url and arg_url.file:
@@ -110,9 +111,11 @@ elif arg_url.url and arg_url.file:
    file = arg_url.file
    url_parser(url)  
    url_parser(file)
-else:  
+elif arg_url.file and not arg_url.url:  
  file = arg_url.file
- url_parser(file)            
+ url_parser(file)
+else:
+   print("Invalid input format please add only urls or .txt files")             
 
 
 
