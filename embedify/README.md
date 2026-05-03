@@ -42,7 +42,7 @@ pip install -r requirements.txt
 ## Usage
 
 ```
-Embedify [-h] [--url URL] [--file FILE]
+python main.py [-h] [--url URL] [--file FILE]
 ```
 
 ### Arguments
@@ -76,7 +76,7 @@ With argparse, flags can be used **in any combination**:
 ### Single URL
 
 ```bash
-Embedify --url "https://youtube.com/shorts/abc123"
+python main.py --url "https://youtube.com/shorts/abc123"
 ```
 
 ---
@@ -84,7 +84,7 @@ Embedify --url "https://youtube.com/shorts/abc123"
 ### File input
 
 ```bash
-Embedify --file links.txt
+python main.py --file links.txt
 ```
 
 Example file:
@@ -99,7 +99,7 @@ https://www.instagram.com/reel/xyz789/
 ### Combined input (argparse behavior)
 
 ```
-Embedify --url "https://youtube.com/shorts/abc123" --file links.txt
+python main.py --url "https://youtube.com/shorts/abc123" --file links.txt
 ```
 
 Processes:
