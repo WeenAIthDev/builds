@@ -214,8 +214,8 @@ embedify/
 
 ## Credits
 
-In collaboration with Jesus \n
-Made with <3 by WeenAIthDev
+In collaboration with Jesus,
+made with <3 by WeenAIthDev
 
 
 ---
