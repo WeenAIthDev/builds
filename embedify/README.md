@@ -37,6 +37,7 @@ pip install -r requirements.txt
 ```bash
 git clone https://github.com/WeenAIthDev/builds.git
 ```
+2. Navigate to embedify folder
 ```bash
 cd embedify
 ```
