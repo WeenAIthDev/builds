@@ -76,7 +76,7 @@ With argparse, flags can be used **in any combination**:
 ### Single URL
 
 ```bash
-python main.py --url "https://youtube.com/shorts/abc123"
+python main.py --url https://youtube.com/shorts/abc123
 ```
 
 ---
@@ -99,7 +99,7 @@ https://www.instagram.com/reel/xyz789/
 ### Combined input (argparse behavior)
 
 ```
-python main.py --url "https://youtube.com/shorts/abc123" --file links.txt
+python main.py --url https://youtube.com/shorts/abc123 --file links.txt
 ```
 
 Processes:
