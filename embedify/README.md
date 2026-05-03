@@ -1,5 +1,4 @@
 
-````
 # Embedify
 
 Embedify is a command-line tool that converts **YouTube Shorts** and **Instagram Reels** links into:
@@ -182,7 +181,5 @@ embedify/
 In collaboration with Jesus
 Made with <3 by WeenAIthDev
 
-````
 
-````
 
