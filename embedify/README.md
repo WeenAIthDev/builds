@@ -8,6 +8,15 @@ Embedify is a command-line tool that converts **YouTube Shorts** and **Instagram
 The results are saved into a `.txt` file.
 
 ---
+## Application and Story Behind Embedify
+
+While building my portfolio site using Adobe Portfolio, I noticed that embed codes were easily available for regular YouTube videos and Instagram posts directly from their platforms. However, this was not the case for **YouTube Shorts** and **Instagram Reels**.
+
+This gap led to the creation of **Embedify**.
+
+Embedify was built to simplify the process of integrating Shorts and Reels into portfolio websites, especially for creators and video editors who want to showcase their work seamlessly on platforms like Adobe Portfolio.
+
+---
 
 ## Features
 
