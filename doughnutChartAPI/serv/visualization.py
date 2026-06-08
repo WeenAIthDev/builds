@@ -26,7 +26,7 @@ cloudinary.config(
     cloud_name=config.CLOUDINARY_CLOUD_NAME,
     api_key=config.CLOUDINARY_API_KEY,
     api_secret=config.CLOUDINARY_API_SECRET
-)
+) #to use cloudinary by letting it recongnise which account 
     
 def processing_sales(dt):
     value = dt['values']
@@ -59,8 +59,8 @@ async def visualise_sales(dv:proc.DataVisual):
       ud = str(uuid.uuid4())
       os.makedirs(config.OUTPUT_FOLDER, exist_ok=True)
       filename = '{}/{}_{}_{}.png'.format(config.OUTPUT_FOLDER, config.CHART_PREFIX, dv.title, ud)
-      fig.savefig(filename)
-      result = upload(filename)
+      fig.savefig(filename) #saves the fig in the file specified in filename
+      result = upload(filename) #uploads in cloudinary
       dt = {
         'label':dv.label,
         'values':dv.values
@@ -69,7 +69,7 @@ async def visualise_sales(dv:proc.DataVisual):
       data_analysis = processing_sales(dt)
       message = {
      "status": "success",
-     "chart_url": result["secure_url"],
+     "chart_url": result["secure_url"], #because result has two keys url and secure_url so access url only in secure url
      "total":data_analysis[2],
      "highest_category":data_analysis[0],
      "lowest_category":data_analysis[1],
