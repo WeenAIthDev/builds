@@ -3,7 +3,9 @@ import serv.data_processing as process
 import serv.visualization as visualise
 import serv.ai_service as ai_serv
 import config
+from fastapi.staticfiles import StaticFiles
 app = FastAPI() #creates backend app
+app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
 @app.get("/health")
 async def root():
     msg = '{} Alive!'.format(config.APP_NAME)
