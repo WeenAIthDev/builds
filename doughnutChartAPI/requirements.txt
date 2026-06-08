@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pandas
+matplotlib
+google-genai
+python-dotenv
