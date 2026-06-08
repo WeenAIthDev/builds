@@ -67,7 +67,7 @@ async def visualise_sales(dv:proc.DataVisual):
      "average_value": data_analysis[3]
 
 
-}
+    }
       return message
 
     except Exception as e:

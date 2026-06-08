@@ -26,4 +26,4 @@ async def ai_summary(result):
 
     except Exception as e:
         print(e)
-        return  "{}\n AI summary unavailable. Analytics completed successfully".format(e.message)
+        return  "{}\n AI summary unavailable. Analytics completed successfully".format(e)
