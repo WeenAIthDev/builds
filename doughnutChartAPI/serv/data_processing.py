@@ -5,6 +5,6 @@ class Data(BaseModel):
     values: list[float]
 
 class DataVisual(Data) :
-    color: dict[str, str]
-    figsize: tuple[int, int]
+    color: dict[str]
+    figsize: tuple[int]
     title: str
