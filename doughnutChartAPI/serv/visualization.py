@@ -4,6 +4,7 @@ import pandas as pd
 import uuid
 import serv.data_processing as proc
 import config
+import os
 #import serv.ai_service as ai
 #app = FastAPI() #creates backend app
 
@@ -50,6 +51,7 @@ async def visualise_sales(dv:proc.DataVisual):
       ax.add_patch(circle_draw)
       plt.legend(title=dv.title)
       ud = str(uuid.uuid4())
+      os.makedirs(config.OUTPUT_FOLDER, exist_ok=True)
       filename = '{}/{}_{}_{}.png'.format(config.OUTPUT_FOLDER, config.CHART_PREFIX, dv.title, ud)
       fig.savefig(filename)
       dt = {
@@ -60,7 +62,7 @@ async def visualise_sales(dv:proc.DataVisual):
       data_analysis = processing_sales(dt)
       message = {
      "status": "success",
-     "chart_file": filename,
+     "chart_url": f"https://doughnut-chart-api.onrender.com/outputs/{os.path.basename(filename)}",
      "total":data_analysis[2],
      "highest_category":data_analysis[0],
      "lowest_category":data_analysis[1],
