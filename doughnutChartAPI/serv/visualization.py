@@ -54,6 +54,8 @@ async def visualise_sales(dv:proc.DataVisual):
       os.makedirs(config.OUTPUT_FOLDER, exist_ok=True)
       filename = '{}/{}_{}_{}.png'.format(config.OUTPUT_FOLDER, config.CHART_PREFIX, dv.title, ud)
       fig.savefig(filename)
+      print("Saved file", filename)
+      print(os.path.exists(filename))
       dt = {
         'label':dv.label,
         'values':dv.values
