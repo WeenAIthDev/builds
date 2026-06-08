@@ -69,7 +69,7 @@ async def visualise_sales(dv:proc.DataVisual):
       data_analysis = processing_sales(dt)
       message = {
      "status": "success",
-     "chart_url": result['secure_url'],
+     "chart_url": result["secure_url"],
      "total":data_analysis[2],
      "highest_category":data_analysis[0],
      "lowest_category":data_analysis[1],
