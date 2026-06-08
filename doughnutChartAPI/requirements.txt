@@ -1,6 +1,8 @@
 fastapi
 uvicorn
+pydantic
 pandas
 matplotlib
-google-genai
 python-dotenv
+google-genai
+cloudinary
